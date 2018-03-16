@@ -39,6 +39,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String email_str = email.getText().toString().trim();
         String password_str = password.getText().toString().trim();
 
+        // Feedback: if email is empty and legit and;
+        // if password id empty or shorter than 6 characters
         if(email_str.isEmpty()){
             email.setError("username is required");
             email.requestFocus();
@@ -59,8 +61,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             password.requestFocus();
         }
 
-
-
         // User Log in
         mAuth.signInWithEmailAndPassword(email_str, password_str)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -69,7 +69,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         if (task.isSuccessful()) {
 
                             // Sign in success, go to HomescreenActivity
-                            FirebaseUser user = mAuth.getCurrentUser();
                             Intent intent = new Intent(LoginActivity.this, HomescreenActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
@@ -87,9 +86,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+
+            // User creates new account
             case R.id.create_account:
                 startActivity(new Intent(this, SignUpActivity.class));
                 break;
+
+            // User signs in
             case R.id.signin:
                 userLogin();
                 break;

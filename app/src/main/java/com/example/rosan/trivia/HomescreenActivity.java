@@ -3,19 +3,13 @@ package com.example.rosan.trivia;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class HomescreenActivity extends AppCompatActivity {
-
-
-    DatabaseReference username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +23,11 @@ public class HomescreenActivity extends AppCompatActivity {
             String name = email.substring(0, 3).toUpperCase();
 
             FirebaseDatabase database = FirebaseDatabase.getInstance();
-            username = database.getReference(user.getUid() + "/name");
+            DatabaseReference username = database.getReference(user.getUid() + "/name");
             username.setValue(name);
-
-
         }
+
+        /* Wil nog een opties: uitloggen toevoegen */
     }
 
     public void toGameActivity(View view) {

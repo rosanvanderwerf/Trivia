@@ -18,10 +18,8 @@ public class GameActivity extends AppCompatActivity implements TriviaHelper.Call
 
     String correctAnswer;
     Button answer;
-
     Integer storedCorrect;
     Integer storedAll;
-
     SharedPreferences prefs;
 
     @Override
@@ -46,7 +44,7 @@ public class GameActivity extends AppCompatActivity implements TriviaHelper.Call
         allAs.setText(String.valueOf(storedAll));
 
         // Check if StoredAll == 10, and if so: go to Score activity (and maybe save it in FireBase)
-        if (storedAll >= 2){
+        if (storedAll > 10){
 
             // Save scores in new Intent and...
             Intent intent = new Intent(GameActivity.this, ScoreActivity.class);
@@ -99,7 +97,6 @@ public class GameActivity extends AppCompatActivity implements TriviaHelper.Call
         Button b = (Button)view;
         String chosenAnswer = b.getText().toString();
 
-        // Check if chosenAnswer is correctAnswer
         if (chosenAnswer.equals(correctAnswer)){
 
             // Feedback: correct option is clicked
@@ -112,7 +109,7 @@ public class GameActivity extends AppCompatActivity implements TriviaHelper.Call
             editor.putInt("allAnswers", storedAll + 1);
             editor.apply();
 
-            // and display new question
+            // and display new question, by restarting the activity
             finish();
             startActivity(getIntent());
         } else {
@@ -130,7 +127,6 @@ public class GameActivity extends AppCompatActivity implements TriviaHelper.Call
             // and display new question
             finish();
             startActivity(getIntent());
-
         }
     }
 

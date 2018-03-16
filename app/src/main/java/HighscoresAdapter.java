@@ -5,11 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-
 import com.example.rosan.trivia.Highscore;
 import com.example.rosan.trivia.R;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /* Created by rosan on 16-3-2018. */
@@ -27,16 +25,8 @@ public class HighscoresAdapter extends ArrayAdapter<Highscore> {
         this.scores = scores;
     }
 
-    /*@NonNull
-    @Override
-    public View getView(int i, @Nullable View v, @NonNull ViewGroup parent) {
-        return super.getView(i, v, parent);
-        // create instance of Highscore
-        Highscore score = getItem(i);
-
-        if (v == null) {
-            v = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
-        }
-        //
-    }*/
+    /* getView method, with:
+    // getItem(position),
+    // LayoutInflater,
+    // find Views and put details in ListView */
 }

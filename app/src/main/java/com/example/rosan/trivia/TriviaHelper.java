@@ -4,22 +4,19 @@ package com.example.rosan.trivia;
 
 import android.content.Context;
 import android.util.Log;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class TriviaHelper implements Response.Listener<JSONArray>, Response.ErrorListener{
 
-    public Context context;
-    public Callback cb;
+    private Callback cb;
 
     public interface Callback{
         void gotQuestion(Question question);
@@ -28,6 +25,7 @@ public class TriviaHelper implements Response.Listener<JSONArray>, Response.Erro
 
     // Constructor
     TriviaHelper(Context c){
+        Context context;
         context = c;
     }
 
@@ -62,7 +60,7 @@ public class TriviaHelper implements Response.Listener<JSONArray>, Response.Erro
 
                 cb.gotQuestion(question);
             } catch (JSONException e) {
-                e.printStackTrace();
+                cb.gotError("onResponse: error");
             }
         }
 
@@ -74,8 +72,4 @@ public class TriviaHelper implements Response.Listener<JSONArray>, Response.Erro
         Log.d("error", "error");
         cb.gotError("onErrorResponse: retrieval unaccomplished");
     }
-
-
-
-
 }

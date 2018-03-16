@@ -1,15 +1,11 @@
 package com.example.rosan.trivia;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -17,8 +13,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class ScoreActivity extends AppCompatActivity {
@@ -62,10 +56,13 @@ public class ScoreActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 a_str = dataSnapshot.getValue(String.class);
-                //Integer a_int = Integer.parseInt(dataSnapshot.getValue(String.class));
                 if(a_str==null){
+
+                    // First score: write to DB
                     cScore.setValue(String.valueOf(correctAnswers));
                 } else {
+
+                    // Add current (new) score to saved score
                     a_int = Integer.parseInt(a_str);
                     cScore.setValue(String.valueOf(correctAnswers + a_int));
                 }
@@ -81,10 +78,13 @@ public class ScoreActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 b_str = dataSnapshot.getValue(String.class);
-                //Integer b_int = Integer.parseInt(dataSnapshot.getValue(String.class));
                 if(b_str==null){
+
+                    // First score: write to DB
                     aScore.setValue(String.valueOf(allAnswers));
                 } else {
+
+                    // Add current (new) score to saved score
                     b_int = Integer.parseInt(b_str);
                     aScore.setValue(String.valueOf(allAnswers + b_int));
                 }
@@ -97,12 +97,6 @@ public class ScoreActivity extends AppCompatActivity {
         });
 
         // Create (new) high score and add it to the ArrayList<Highscore>
-        String email = user.getEmail();
-        assert email != null;
-
-        String name = email.substring(0, 3).toUpperCase();
-        Highscore hScore = new Highscore(name,a_str, b_str);
-        scores.add(hScore);
     }
 
     @Override

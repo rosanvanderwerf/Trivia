@@ -6,9 +6,9 @@ import java.io.Serializable;
 
 public class Highscore implements Serializable {
 
-    String name;
-    String cScore;
-    String aScore;
+    private String name;
+    private String cScore;
+    private String aScore;
 
     public Highscore(String name, String cscore, String ascore){
         this.name = name;
