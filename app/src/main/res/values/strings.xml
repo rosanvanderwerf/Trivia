@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Trivia</string>
+    <string name="newgame">start new game</string>
+    <string name="newGame">start new game</string>
+    <string name="leaderboard">view leaderboard</string>
+    <string name="correctanswers">correct answers:</string>
+    <string name="allanswers">all answers:</string>
+    <string name="score">Score</string>
+    <string name="ok">OK</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="sign_in">sign in</string>
+    <string name="create_account">Create account</string>
+    <string name="email">e-mail</string>
 </resources>
