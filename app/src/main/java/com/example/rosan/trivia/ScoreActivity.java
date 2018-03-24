@@ -48,8 +48,8 @@ public class ScoreActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
         assert user != null;
-        cScore = database.getReference(user.getUid() + "/correctScore");
-        aScore = database.getReference(user.getUid() + "/allScore");
+        cScore = database.getReference( "users/"+user.getUid()+"/correctScore");
+        aScore = database.getReference("users/"+user.getUid()+"/allScore");
 
         // Read data from DB
         cScore.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -96,7 +96,7 @@ public class ScoreActivity extends AppCompatActivity {
             }
         });
 
-        // Create (new) high score and add it to the ArrayList<Highscore>
+        // Create (new) high score and add it to the Highscore, ArrayList<Highscore>
     }
 
     @Override

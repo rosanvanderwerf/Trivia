@@ -4,6 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class HighscoreActivity extends AppCompatActivity implements HighscoresHelper.Callback{
 
@@ -14,18 +17,19 @@ public class HighscoreActivity extends AppCompatActivity implements HighscoresHe
 
         // Create new request
         HighscoresHelper request = new HighscoresHelper(this);
-        request.getHightScores(this);
-
-        // ArrayList<Highscores> scores
+        request.getHighScores(this);
     }
 
     @Override
-    public void getHighscores() {
-        // Find ListView and set the adapter
+    public void gotHighscores(ArrayList<Highscore> highscores) {
+        ListView scores = findViewById(R.id.scores);
+
+        HighscoresAdapter adapter = new HighscoresAdapter(this, highscores);
+        scores.setAdapter(adapter);
     }
 
     @Override
     public void gotError(String message) {
-        Log.d("error","gotError: getHighscores");
+        Log.d("gotError", message);
     }
 }

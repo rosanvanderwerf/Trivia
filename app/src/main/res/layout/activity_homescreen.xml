@@ -7,6 +7,13 @@
     android:paddingRight="16dp"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="20sp"/>
+
         <Button
             android:id="@+id/game"
             android:layout_width="match_parent"
@@ -26,5 +33,22 @@
             android:layout_margin="5dp"
             android:layout_gravity="center"
             android:onClick="toLeaderboardActivity"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="20dp">
+
+            <Button
+                android:id="@+id/signout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="5dp"
+                android:background="@color/buttonOption"
+                android:onClick="signOut"
+                android:text="@string/sign_out" />
+
+        </RelativeLayout>
 
 </LinearLayout>

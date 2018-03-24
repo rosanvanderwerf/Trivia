@@ -28,6 +28,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         mAuth = FirebaseAuth.getInstance();
 
+        // Check if user is logged in
+        if (mAuth.getCurrentUser()!=null){
+
+            // User is signed in: go to Homescreen
+            startActivity(new Intent(this, HomescreenActivity.class));
+
+        } else {
+
+            // No user signed in
+            Log.d("sign","no user signed in");
+        }
+
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
 

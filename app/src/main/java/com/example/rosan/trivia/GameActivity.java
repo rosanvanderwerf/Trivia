@@ -44,7 +44,7 @@ public class GameActivity extends AppCompatActivity implements TriviaHelper.Call
         allAs.setText(String.valueOf(storedAll));
 
         // Check if StoredAll == 10, and if so: go to Score activity (and maybe save it in FireBase)
-        if (storedAll > 10){
+        if (storedAll >= 10){
 
             // Save scores in new Intent and...
             Intent intent = new Intent(GameActivity.this, ScoreActivity.class);
